@@ -32,7 +32,6 @@ use('wbthomason/packer.nvim')
 --     requires = 'tjdevries/colorbuddy.nvim',
 --     config = function()
 --       vim.cmd('colorscheme cobalt2')
-      
 --     vim.api.nvim_set_hl(0, 'FloatBorder', {
 --       fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
 --       bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
@@ -278,6 +277,8 @@ use({
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    'jayp0521/mason-null-ls.nvim',
   },
   config = function()
     require('user/plugins/lspconfig')
