@@ -311,6 +311,7 @@ use({
   config = function()
     vim.keymap.set('n', '<Leader>pm', ':PhpactorContextMenu<CR>')
     vim.keymap.set('n', '<Leader>pn', ':PhpactorClassNew<CR>')
+    vim.keymap.set('n', '<F5>', ':PhpactorImportClass<CR>')
   end,
 })
 
