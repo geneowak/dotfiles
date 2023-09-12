@@ -1,5 +1,16 @@
 local separator = { '"▏"', color = 'StatusLineNonText' }
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
 require('lualine').setup({
   options = {
     section_separators = '',
@@ -20,7 +31,7 @@ require('lualine').setup({
     },
     lualine_b = {
       'branch',
-      'diff',
+      {'diff', source = diff_source},
       separator,
       '"󰒍  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
       { 'diagnostics', sources = { 'nvim_diagnostic' } },
