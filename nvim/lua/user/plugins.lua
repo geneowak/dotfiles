@@ -85,6 +85,13 @@ use({
 -- Games to practice vim movements
 use('ThePrimeagen/vim-be-good')
 
+-- Easier file navigation
+use({'ThePrimeagen/harpoon',
+  config = function()
+    require('user/plugins/harpoon')
+  end,
+})
+
 -- Commenting support.
 use('tpope/vim-commentary')
 
