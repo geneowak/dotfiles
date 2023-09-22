@@ -14,7 +14,8 @@ require('bufferline').setup({
         text_align = 'left',
       },
     },
-    separator_style = 'slant',
+    -- for some reason slant isn't working so well at the moment, the background color is is not matching
+    -- separator_style = 'slant',
     modified_icon = '',
     custom_areas = {
       left = function()

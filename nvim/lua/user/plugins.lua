@@ -27,59 +27,33 @@ local use = require('packer').use
 use('wbthomason/packer.nvim')
 
 -- Cobalt 2 theme
--- use ({
---     'lalitmee/cobalt2.nvim',
---     requires = 'tjdevries/colorbuddy.nvim',
---     config = function()
---       vim.cmd('colorscheme cobalt2')
-        -- vim.api.nvim_set_hl(0, 'FloatBorder', {
-        --   fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-        --   bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-        -- })
+-- Previously used 'jessarcher/onedark.nvim', has no requires
+use ({
+    'geneowak/cobalt2.nvim',
+    requires = 'tjdevries/colorbuddy.nvim',
+    config = function()
+      vim.cmd('colorscheme cobalt2')
+      require('colorbuddy').colorscheme('cobalt2')
+      vim.api.nvim_set_hl(0, 'FloatBorder', {
+        fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+        bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+      })
 
-        -- -- Make the cursor line background invisible
-        -- vim.api.nvim_set_hl(0, 'CursorLineBg', {
-        --   fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-        --   bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-        -- })
+      -- Make the cursor line background invisible
+      vim.api.nvim_set_hl(0, 'CursorLineBg', {
+        fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+        bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+      })
 
-        -- vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
 
-        -- vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-        --   fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-        --   bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
-        -- })
+      vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+        fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+        bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+      })
 
-        -- vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
---     end,
--- })
-
--- One Dark theme.
-use({
-  'jessarcher/onedark.nvim',
-  config = function()
-    vim.cmd('colorscheme onedark')
-
-    vim.api.nvim_set_hl(0, 'FloatBorder', {
-      fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-      bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-    })
-
-    -- Make the cursor line background invisible
-    vim.api.nvim_set_hl(0, 'CursorLineBg', {
-      fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-      bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-    })
-
-    vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
-
-    vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-      fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-      bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
-    })
-
-    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
-  end,
+      vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+    end,
 })
 
 -- Games to practice vim movements
@@ -221,7 +195,8 @@ use({
 use({
   'akinsho/bufferline.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
-  after = 'onedark.nvim',
+  after = 'cobalt2.nvim',
+  -- after = 'onedark.nvim',
   config = function()
     require('user/plugins/bufferline')
   end,
