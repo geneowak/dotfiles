@@ -263,6 +263,7 @@ use({
   requires = {
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-context',
   },
   config = function()
     require('user/plugins/treesitter')
