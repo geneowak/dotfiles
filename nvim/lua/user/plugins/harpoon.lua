@@ -35,8 +35,8 @@ vim.keymap.set('n', 'hn', '<cmd>require("harpoon.ui").nav_next() <CR>')
 vim.keymap.set('n', 'hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>')
 
 -- view all project marks
-vim.keymap.set('n', 'hm', ':Telescope harpoon marks<CR>')
--- vim.keymap.set('n', 'hv', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
+-- vim.keymap.set('n', 'hm', ':Telescope harpoon marks<CR>')
+vim.keymap.set('n', 'hm', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
 
 -- navigates to file 3 ... vim.diagnostic.open_float()
 -- vim.keymap.set('n', '<Leader>d', '<cmd>lua require("harpoon.ui").nav_file()<CR>')
