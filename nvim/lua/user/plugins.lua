@@ -70,12 +70,12 @@ use({'ThePrimeagen/harpoon',
 require('telescope').load_extension('harpoon')
 
 -- Code folding
--- use({'kevinhwang91/nvim-ufo',
---   requires = 'kevinhwang91/promise-async',
---   config = function()
---     require('user/plugins/nvim-ufo')
---   end,
--- })
+use({'kevinhwang91/nvim-ufo',
+  requires = 'kevinhwang91/promise-async',
+  config = function()
+    require('user/plugins/nvim-ufo')
+  end,
+})
 
 -- Commenting support.
 use('tpope/vim-commentary')
