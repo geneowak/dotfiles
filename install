@@ -5,6 +5,10 @@ DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 rm -rf $HOME/.zshrc
 ln -s $DOTFILES/zsh/zshrc $HOME/.zshrc
 
+# loads the zsh terminal configuration of the p10k theme
+rm -rf $HOME/.p10k.zsh
+ln -s $DOTFILES/zsh/p10k.zsh $HOME/.p10k.zsh
+
 rm -rf $HOME/.config/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
 
