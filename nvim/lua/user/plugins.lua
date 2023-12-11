@@ -66,6 +66,9 @@ use({'ThePrimeagen/harpoon',
   end,
 })
 
+-- Harpoon telescope extension
+require('telescope').load_extension('harpoon')
+
 -- Code folding
 -- use({'kevinhwang91/nvim-ufo',
 --   requires = 'kevinhwang91/promise-async',

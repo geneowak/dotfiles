@@ -15,7 +15,7 @@ global_settings = {
     excluded_filetypes = { "harpoon" },
 
     -- set marks specific to each git branch inside git repository
-    mark_branch = false,
+    mark_branch = true,
 
     -- enable tabline with harpoon marks
     tabline = false,
@@ -26,13 +26,18 @@ global_settings = {
 -- Keymaps
 
 -- mark files you want to revisit later on
-vim.keymap.set('n', '<Leader>M', '<cmd>lua require("harpoon.mark").add_file()<CR>')
--- view all project marks
-vim.keymap.set('n', '<Leader>H', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
+vim.keymap.set('n', 'hx', '<cmd>lua require("harpoon.mark").add_file()<CR>')
+
 -- navigates to previous mark
-vim.keymap.set('n', '<C-Tab>', '<cmd>require("harpoon.ui").nav_next() <CR>')
+vim.keymap.set('n', 'hn', '<cmd>require("harpoon.ui").nav_next() <CR>')
+
 -- navigates to next mark
-vim.keymap.set('n', '<S-CR>', '<cmd>lua require("harpoon.ui").nav_prev()<CR>')
+vim.keymap.set('n', 'hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>')
+
+-- view all project marks
+vim.keymap.set('n', 'hm', ':Telescope harpoon marks<CR>')
+-- vim.keymap.set('n', 'hv', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
+
 -- navigates to file 3 ... vim.diagnostic.open_float()
 -- vim.keymap.set('n', '<Leader>d', '<cmd>lua require("harpoon.ui").nav_file()<CR>')
 
