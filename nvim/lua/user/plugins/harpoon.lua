@@ -29,7 +29,7 @@ global_settings = {
 vim.keymap.set('n', 'hx', '<cmd>lua require("harpoon.mark").add_file()<CR>')
 
 -- navigates to previous mark
-vim.keymap.set('n', 'hn', '<cmd>require("harpoon.ui").nav_next() <CR>')
+vim.keymap.set('n', 'hn', '<cmd>lua require("harpoon.ui").nav_next() <CR>')
 
 -- navigates to next mark
 vim.keymap.set('n', 'hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>')
