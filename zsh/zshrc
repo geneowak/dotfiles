@@ -124,8 +124,8 @@ export VISUAL="$EDITOR"
 
 # Aliases
 
+alias avim=/usr/bin/vim
 alias vim=nvim
-alias avim=nvim
 
 alias x='exit'
 alias cls='printf "\33c\e[3J"'
