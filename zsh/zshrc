@@ -181,6 +181,9 @@ alias rs='reset'
 # clear the console and return to home
 alias rc='reset_console'
 
+# command to update kitty terminal. PS: Same command is used for installing kitty terminal
+alias update_kitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
+
 # test func
 # prints the input
 function output_input() {
@@ -228,3 +231,15 @@ function switch_2_php7.4() {
   brew unlink php@8.1
   brew link php@7.4
 }
+
+
+# Herd injected PHP binary.
+export PATH="/Users/geneowak/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP 8.1 configuration.
+export HERD_PHP_81_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/81/"
