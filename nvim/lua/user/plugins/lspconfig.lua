@@ -32,15 +32,15 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig').eslint.setup({
-  --- ...
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
-})
+-- require('lspconfig').eslint.setup({
+--   --- ...
+--   on_attach = function(client, bufnr)
+--     vim.api.nvim_create_autocmd("BufWritePre", {
+--       buffer = bufnr,
+--       command = "EslintFixAll",
+--     })
+--   end,
+-- })
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 local event = "BufWritePre" -- or "BufWritePost"
@@ -88,7 +88,7 @@ require('null-ls').setup({
     }),
     require('null-ls').builtins.formatting.prettierd,
     require('null-ls').builtins.formatting.pint,
-    -- require('null-ls').builtins.formatting.prettier_eslint,
+    require('null-ls').builtins.formatting.prettier_eslint,
   },
 })
 
