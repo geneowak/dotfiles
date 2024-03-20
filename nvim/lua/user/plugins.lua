@@ -30,9 +30,9 @@ use('wbthomason/packer.nvim')
 -- Previously used 'jessarcher/onedark.nvim', has no requires
 use ({
     'geneowak/cobalt2.nvim',
-    requires = 'tjdevries/colorbuddy.nvim',
+    requires = { "tjdevries/colorbuddy.nvim", tag = "v1.0.0" },
     config = function()
-      vim.cmd('colorscheme cobalt2')
+      -- vim.cmd('colorscheme cobalt2')
       require('colorbuddy').colorscheme('cobalt2')
       vim.api.nvim_set_hl(0, 'FloatBorder', {
         fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
