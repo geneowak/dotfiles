@@ -5,10 +5,33 @@ require('mason-lspconfig').setup({ automatic_installation = true })
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- PHP
-require('lspconfig').intelephense.setup({ capabilities = capabilities })
+require('lspconfig').intelephense.setup({ 
+  commands = {
+    IntelephenseIndex = {
+      function()
+        vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+      end,
+    },
+  },
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    -- if client.server_capabilities.inlayHintProvider then
+    --   vim.lsp.buf.inlay_hint(bufnr, true)
+    -- end
+  end,
+  capabilities = capabilities
+})
 
 -- Vue, JavaScript, TypeScript
 require('lspconfig').volar.setup({
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    -- if client.server_capabilities.inlayHintProvider then
+    --   vim.lsp.buf.inlay_hint(bufnr, true)
+    -- end
+  end,
   capabilities = capabilities,
   -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
   -- This drastically improves the responsiveness of diagnostic updates on change
@@ -50,44 +73,35 @@ local async = event == "BufWritePost"
 require('null-ls').setup({
 
     on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "F", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-
-      -- format on save
-      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-      vim.api.nvim_create_autocmd(event, {
-        buffer = bufnr,
-        group = group,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr, async = async })
-        end,
-        desc = "[lsp] format on save",
-      })
-    end
-
-    if client.supports_method("textDocument/rangeFormatting") then
-      vim.keymap.set("x", "F", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-    end
-  end,
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = augroup,
+          buffer = bufnr,
+          callback = function()
+            vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
+          end,
+        })
+      end
+    end,
 
   sources = {
     require('null-ls').builtins.diagnostics.eslint_d.with({
       condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
+        return utils.root_has_file({ '.eslintrc.js', '.eslintrc.cjs' })
       end,
     }),
     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-    require('null-ls').builtins.formatting.eslint_d.with({
+    require('null-ls').builtins.formatting.prettierd.with({
       condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
+        return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
       end,
     }),
-    require('null-ls').builtins.formatting.prettierd,
-    require('null-ls').builtins.formatting.pint,
+    require('null-ls').builtins.formatting.pint.with({
+      condition = function(utils)
+        return utils.root_has_file({ 'vendor/bin/pint' })
+      end,
+    }),
     require('null-ls').builtins.formatting.prettier_eslint,
   },
 })
