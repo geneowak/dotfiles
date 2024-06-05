@@ -26,7 +26,6 @@ return {
     sections = {
       lualine_a = {
         'mode',
-        separator,
       },
       lualine_b = {
         'branch',
