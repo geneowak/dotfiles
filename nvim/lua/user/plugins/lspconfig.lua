@@ -77,6 +77,9 @@ return {
         -- end
       end,
       capabilities = capabilities,
+      -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
+      -- This drastically improves the responsiveness of diagnostic updates on change
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
     require('lspconfig').tsserver.setup({
@@ -96,7 +99,7 @@ return {
         "typescript",
         "typescriptreact",
         "typescript.tsx",
-        "vue",
+        -- "vue",
       },
     })
 
