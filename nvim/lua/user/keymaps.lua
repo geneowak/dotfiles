@@ -27,8 +27,6 @@ vim.keymap.set('i', ',,', '<Esc>A,')
 -- Quickly clear search highlighting.
 vim.keymap.set('n', '<Leader>k', ':nohlsearch<CR>')
 
--- Close all open buffers
-vim.keymap.set('n', '<C-w>', ':bufdo bwipeout<CR>')
 
 -- Open the current file in the default program (on Mac this should just be just `open`).
 --vim.keymap.set('n', '<Leader>x', ':!xdg-open %<CR><CR>')

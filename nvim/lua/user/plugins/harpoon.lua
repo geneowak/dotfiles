@@ -1,43 +1,53 @@
-global_settings = {
-    -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
-    save_on_toggle = false,
+-- Easier file navigation
 
-    -- saves the harpoon file upon every change. disabling is unrecommended.
-    save_on_change = true,
+return {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+        global_settings = {
+            -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
+            save_on_toggle = false,
 
-    -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
-    enter_on_sendcmd = false,
+            -- saves the harpoon file upon every change. disabling is unrecommended.
+            save_on_change = true,
 
-    -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
-    tmux_autoclose_windows = false,
+            -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
+            enter_on_sendcmd = false,
 
-    -- filetypes that you want to prevent from adding to the harpoon list menu.
-    excluded_filetypes = { "harpoon" },
+            -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
+            tmux_autoclose_windows = false,
 
-    -- set marks specific to each git branch inside git repository
-    mark_branch = true,
+            -- filetypes that you want to prevent from adding to the harpoon list menu.
+            excluded_filetypes = { "harpoon" },
 
-    -- enable tabline with harpoon marks
-    tabline = false,
-    tabline_prefix = "   ",
-    tabline_suffix = "   ",
+            -- set marks specific to each git branch inside git repository
+            mark_branch = true,
+
+            -- enable tabline with harpoon marks
+            tabline = false,
+            tabline_prefix = "   ",
+            tabline_suffix = "   ",
+        }
+    },
+    keys = function ()
+        local harpoon = require("harpoon")
+
+        -- Keymaps
+        return {
+        -- mark files you want to revisit later on
+        {'hx', function() harpoon:list():add() end },
+        -- navigates to previous mark
+        {'hn', function() harpoon:list():next() end },
+        -- navigates to next mark
+        {'hp', function() harpoon:list():prev() end },
+        -- view all project marks
+        {'hm', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end},
+        -- navigates to file 3 ... vim.diagnostic.open_float()
+        {"<C-h>", function() harpoon:list():select(1) end},
+        {"<C-t>", function() harpoon:list():select(2) end},
+        {"<C-n>", function() harpoon:list():select(3) end},
+        {"<C-s>", function() harpoon:list():select(4) end},
+    }
+    end
 }
-
--- Keymaps
-
--- mark files you want to revisit later on
-vim.keymap.set('n', 'hx', '<cmd>lua require("harpoon.mark").add_file()<CR>')
-
--- navigates to previous mark
-vim.keymap.set('n', 'hn', '<cmd>lua require("harpoon.ui").nav_next() <CR>')
-
--- navigates to next mark
-vim.keymap.set('n', 'hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>')
-
--- view all project marks
--- vim.keymap.set('n', 'hm', ':Telescope harpoon marks<CR>')
-vim.keymap.set('n', 'hm', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
-
--- navigates to file 3 ... vim.diagnostic.open_float()
--- vim.keymap.set('n', '<Leader>d', '<cmd>lua require("harpoon.ui").nav_file()<CR>')
-
