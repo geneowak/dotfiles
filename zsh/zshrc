@@ -79,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git laravel zsh-syntax-highlighting zsh-autosuggestions git-flow)
+plugins=(git laravel zsh-syntax-highlighting zsh-autosuggestions git-flow z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +123,7 @@ export VISUAL="$EDITOR"
 
 
 # Aliases
+alias reload='source ~/.zshrc'
 
 alias avim=/usr/bin/vim
 alias vim=nvim
@@ -148,9 +149,11 @@ alias atf='pa test --filter'
 alias tinker="php artisan tinker"
 
 alias ctf='composer test -- --filter'
-alias cl='composer lint'
 alias cda='composer dump-autoload'
+alias cl='composer lint'
 alias clf='composer lint:fix'
+alias pint='pint --test'
+alias pintf='pint -v'
 
 # Git
 alias nah="git reset --hard && git clean -df"
@@ -169,8 +172,8 @@ alias gpcl='git pull && clean_git_branches'
 alias gnb='git checkout -b'
 # checkout the dev branch, pull changes and remove deleted branches
 alias gcdpc='git checkout develop && git pull && clean_git_branches'
-# checkout the master branch, pull changes and remove deleted branches
-alias gcmpc='git checkout master && git pull && clean_git_branches'
+# checkout the main branch, pull changes and remove deleted branches
+alias gcmpc='git checkout main && git pull && clean_git_branches'
 # checkout the mainline branch, pull changes and remove deleted branches
 alias gcmlpc='git checkout mainline && git pull && clean_git_branches'
 # checkout the staging branch, pull changes and remove deleted branches
@@ -188,6 +191,15 @@ alias update_kitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 # prints the input
 function output_input() {
   echo "Your input: " $1
+}
+
+# run the given command a number of times
+function repeat_test() {
+  for i in {1..100};
+  do
+    echo "Run no: $i"
+    atf $1 --stop-on-fail
+  done
 }
 
 # resets the console
