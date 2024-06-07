@@ -12,10 +12,9 @@ return {
   },
   config = function()
     vim.cmd([[
-      let test#php#phpunit#options = '--colors=always'
       let test#php#phpunit#executable = 'php artisan test'
-      " the line below is no longer needed when using artisan test as the executable, see above"
-      " let test#php#pest#options = '--colors=always'
+      let test#php#phpunit#options = '--colors=always'
+      let test#php#pest#options = '--colors=always'
 
       function! FloatermStrategy(cmd)
         execute 'silent FloatermSend q'
