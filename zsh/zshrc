@@ -162,7 +162,7 @@ alias nah="git reset --hard && git clean -df"
 alias undocommit="git reset HEAD~1"
 alias gs="git status"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias galc='git add . && git commit -m'
+alias gadalc='git add . && git commit -m'
 alias gcap='git commit -am'
 alias wip="git commit -am 'wip'"
 alias amend="git commit -a --amend"
