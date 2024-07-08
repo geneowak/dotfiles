@@ -3,6 +3,7 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   cmd = 'Neotree',
+  branch = "v3.x",
   keys = {
     { '<leader>n', ':Neotree reveal toggle<CR>' },
   },
@@ -58,12 +59,22 @@ return {
       indent = {
         padding = 0,
       },
+      icon = {
+        folder_closed = "",
+        folder_open = "",
+        folder_empty = "󰜌",
+        -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+        -- then these will never be used.
+        default = "*",
+        highlight = "NeoTreeFileIcon"
+      },
       name = {
         use_git_status_colors = false,
         highlight_opened_files = true,
       },
     },
     window = {
+      position = "right",
       mappings = {
         ["<cr>"] = "open_with_window_picker",
       },
