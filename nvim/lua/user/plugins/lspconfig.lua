@@ -9,6 +9,7 @@ return {
     'b0o/schemastore.nvim',
     { 'jose-elias-alvarez/null-ls.nvim', dependencies = 'nvim-lua/plenary.nvim' },
     'jayp0521/mason-null-ls.nvim',
+    'https://gitlab.com/schrieveslaach/sonarlint.nvim'
   },
   config = function()
     -- Setup Mason to automatically install LSP servers
@@ -132,6 +133,26 @@ return {
       }
     })
 
+    require('sonarlint').setup({
+       server = {
+          cmd = {
+             'sonarlint-language-server',
+             -- Ensure that sonarlint-language-server uses stdio channel
+             '-stdio',
+             '-analyzers',
+             -- paths to the analyzers you need, using those for python and java in this example
+             vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarjs.jar"),
+             vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarphp.jar"),
+          }
+       },
+       filetypes = {
+          -- Tested and working
+          'php',
+          'js',
+       }
+    })
+
+
     -- null-ls
     local null_ls = require('null-ls')
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -175,7 +196,7 @@ return {
       end,
     })
 
-    require('mason-null-ls').setup({ automatic_installation = true })
+    require('mason-null-ls').setup({ ensure_installed = {}, automatic_installation = true })
 
     -- Keymaps
     vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')

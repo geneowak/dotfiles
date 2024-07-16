@@ -5,7 +5,7 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
-        global_settings = {
+        settings = {
             -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
             save_on_toggle = true,
 
@@ -31,7 +31,7 @@ return {
         }
     },
     config = function (_, opts)
-        require('harpoon'):setup()
+        require('harpoon'):setup(opts)
     end,
     keys = function ()
         local harpoon = require("harpoon")
