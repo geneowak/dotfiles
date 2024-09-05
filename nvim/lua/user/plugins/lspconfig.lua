@@ -83,7 +83,7 @@ return {
       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
-    require('lspconfig').tsserver.setup({
+    require('lspconfig').ts_ls.setup({
       init_options = {
         plugins = {
           {
@@ -149,7 +149,14 @@ return {
           -- Tested and working
           'php',
           'js',
-       }
+       },
+      settings = {
+         sonarlint = {
+            rules = {
+               ['php:S103'] = { level = 'on' },
+            }
+         }
+      }
     })
 
 

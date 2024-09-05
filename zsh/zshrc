@@ -139,7 +139,7 @@ alias p="phpstorm ."
 
 # Laravel/PHP
 alias pa='php artisan'
-alias atcc='pa cache:clear && pa config:clear'
+alias acc='pa cache:clear && pa config:clear'
 alias ct='composer test'
 alias vtf='vendor/bin/phpunit --colors=always --testdox --filter'
 alias at='pa test'
