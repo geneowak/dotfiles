@@ -168,14 +168,14 @@ return {
       sources = {
         null_ls.builtins.diagnostics.eslint_d.with({
           condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js' })
+            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.cjs' })
           end,
         }),
         -- null_ls.builtins.diagnostics.phpstan, -- TODO: Only if config file
         null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
         null_ls.builtins.formatting.eslint_d.with({
           condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json' })
+            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs' })
           end,
         }),
         null_ls.builtins.formatting.pint.with({
