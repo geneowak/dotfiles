@@ -7,12 +7,14 @@ local inactiveBg = {
 return {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
+  enabled = false,
   opts = {
     options = {
       indicator = {
         icon = ' ',
       },
       show_close_icon = false,
+      always_show_bufferline = false,
       tab_size = 0,
       max_name_length = 25,
       offsets = {
