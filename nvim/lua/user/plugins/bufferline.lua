@@ -7,7 +7,7 @@ local inactiveBg = {
 return {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
-  enabled = false,
+  enabled = true,
   opts = {
     options = {
       indicator = {
