@@ -14,7 +14,7 @@ return {
         icon = ' ',
       },
       show_close_icon = false,
-      always_show_bufferline = false,
+      always_show_bufferline = true,
       tab_size = 0,
       max_name_length = 25,
       offsets = {
