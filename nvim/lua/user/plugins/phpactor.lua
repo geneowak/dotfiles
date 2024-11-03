@@ -4,7 +4,7 @@ return {
   'phpactor/phpactor',
   build = 'composer install --no-dev --optimize-autoloader',
   ft = 'php',
-  enabled = false,
+  enabled = true,
   keys = {
     { '<Leader>pm', ':PhpactorContextMenu<CR>' },
     { '<Leader>pn', ':PhpactorClassNew<CR>' },
