@@ -14,3 +14,7 @@
     ```
     brew install ripgrep
     ```
+
+## Credits
+
+Credit to [Jess Archer](https://github.com/jessarcher) and [her laracasts course](https://laracasts.com/series/neovim-as-a-php-ide) that made it easier to get started with neovim.
