@@ -154,6 +154,8 @@ return {
          sonarlint = {
             rules = {
                ['php:S103'] = { level = 'on' },
+               -- php comments
+               ['php:S125'] = { level = 'off' },
             }
          }
       }
