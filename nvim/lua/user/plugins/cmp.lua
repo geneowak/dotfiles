@@ -32,7 +32,7 @@ return {
       luasnip = "LuaSnip",
       nvim_lua = "Lua",
       path = "Path",
-      copilot = "Copilot",
+      -- copilot = "Copilot",
     }
 
     local function ltrim(s)
