@@ -106,33 +106,32 @@ return {
       }
     })
 
-    require('sonarlint').setup({
-       server = {
-          cmd = {
-             'sonarlint-language-server',
-             -- Ensure that sonarlint-language-server uses stdio channel
-             '-stdio',
-             '-analyzers',
-             -- paths to the analyzers you need, using those for python and java in this example
-             vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarjs.jar"),
-             vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarphp.jar"),
-          }
-       },
-       filetypes = {
-          -- Tested and working
-          'php',
-          'js',
-       },
-      settings = {
-         sonarlint = {
-            rules = {
-               ['php:S103'] = { level = 'on' },
-               -- php comments
-               ['php:S125'] = { level = 'off' },
-            }
-         }
-      }
-    })
+    -- require('sonarlint').setup({
+    --    server = {
+    --       cmd = {
+    --          'sonarlint-language-server',
+    --          -- Ensure that sonarlint-language-server uses stdio channel
+    --          '-stdio',
+    --          '-analyzers',
+    --          -- paths to the analyzers you need, using those for python and java in this example
+    --          vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarjs.jar"),
+    --          vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarphp.jar"),
+    --       }
+    --    },
+    --    filetypes = {
+    --       'php',
+    --       'js',
+    --    },
+    --   settings = {
+    --      sonarlint = {
+    --         rules = {
+    --            ['php:S103'] = { level = 'on' },
+    --            -- php comments
+    --            ['php:S125'] = { level = 'off' },
+    --         }
+    --      }
+    --   }
+    -- })
 
 
     -- null-ls
