@@ -12,7 +12,11 @@ return {
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'onsails/lspkind-nvim',
+    "mlaursen/vim-react-snippets",
   },
+  opts = function ()
+    require("vim-react-snippets").lazy_load()
+  end,
   config = function()
     local cmp = require('cmp')
     local luasnip = require('luasnip')

@@ -22,8 +22,9 @@ return {
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+    local lspconfig = require("lspconfig")
     -- PHP
-    require('lspconfig').intelephense.setup({
+    lspconfig.intelephense.setup({
       commands = {
         IntelephenseIndex = {
           function()
@@ -39,7 +40,7 @@ return {
     })
 
     -- Vue, JavaScript, TypeScript
-    require('lspconfig').volar.setup({
+    lspconfig.volar.setup({
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
@@ -56,7 +57,7 @@ return {
     local mason_registry = require('mason-registry')
     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
-    require('lspconfig').ts_ls.setup({
+    lspconfig.ts_ls.setup({
       init_options = {
         plugins = {
           {
@@ -78,10 +79,30 @@ return {
     })
 
     -- Tailwind CSS
-    require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+    lspconfig.tailwindcss.setup({ capabilities = capabilities })
+
+    -- Eslint
+    lspconfig.eslint.setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+    })
+
+    -- Pint
+    -- lspconfig.pint.setup({ capabilities = capabilities })
+
+    -- Prettier
+    -- lspconfig.prettier_d.setup({ capabilities = capabilities })
+
+    -- Emmet
+    lspconfig.emmet_ls.setup({ capabilities = capabilities })
 
     -- JSON
-    require('lspconfig').jsonls.setup({
+    lspconfig.jsonls.setup({
       capabilities = capabilities,
       settings = {
         json = {
@@ -91,7 +112,7 @@ return {
     })
 
     -- Lua
-    require('lspconfig').lua_ls.setup({
+    lspconfig.lua_ls.setup({
       settings = {
         Lua = {
           runtime = { version = 'LuaJIT' },
@@ -133,51 +154,7 @@ return {
     --   }
     -- })
 
-
-    -- null-ls
-    local null_ls = require('null-ls')
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    null_ls.setup({
-      temp_dir = '/tmp',
-      sources = {
-        null_ls.builtins.diagnostics.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.cjs' })
-          end,
-        }),
-        -- null_ls.builtins.diagnostics.phpstan, -- TODO: Only if config file
-        null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-        null_ls.builtins.formatting.eslint_d.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs' })
-          end,
-        }),
-        null_ls.builtins.formatting.pint.with({
-          condition = function(utils)
-            return utils.root_has_file({ 'vendor/bin/pint' })
-          end,
-        }),
-        null_ls.builtins.formatting.prettier.with({
-          condition = function(utils)
-            return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
-          end,
-        }),
-      },
-      on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-            end,
-          })
-        end
-      end,
-    })
-
-    require('mason-null-ls').setup({ ensure_installed = {}, automatic_installation = true })
+    -- require('mason-null-ls').setup({ ensure_installed = {}, automatic_installation = true })
 
     -- Keymaps
     vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
@@ -193,6 +170,12 @@ return {
 
     -- Commands
     vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format({ timeout_ms = 5000 }) end, {})
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      callback = function()
+        vim.lsp.buf.format { async = false }
+      end
+    })
 
     -- Diagnostic configuration
     vim.diagnostic.config({
