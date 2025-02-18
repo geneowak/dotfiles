@@ -7,9 +7,9 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
-    { 'jose-elias-alvarez/null-ls.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-    'jayp0521/mason-null-ls.nvim',
-    'https://gitlab.com/schrieveslaach/sonarlint.nvim'
+    -- { 'jose-elias-alvarez/null-ls.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+    -- 'jayp0521/mason-null-ls.nvim',
+    -- 'https://gitlab.com/schrieveslaach/sonarlint.nvim'
   },
   config = function()
     -- Setup Mason to automatically install LSP servers
@@ -33,8 +33,11 @@ return {
         },
       },
       on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
+        -- if client.server_capabilities.inlayHintProvider then
+        --   vim.lsp.buf.inlay_hint(bufnr, true)
+        -- end
       end,
       capabilities = capabilities
     })
@@ -51,11 +54,12 @@ return {
       capabilities = capabilities,
       -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
       -- This drastically improves the responsiveness of diagnostic updates on change
-      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
     local mason_registry = require('mason-registry')
-    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+    '/node_modules/@vue/language-server'
 
     lspconfig.ts_ls.setup({
       init_options = {
@@ -63,7 +67,7 @@ return {
           {
             name = "@vue/typescript-plugin",
             location = vue_language_server_path,
-            languages = {"javascript", "typescript", "vue"},
+            languages = { "javascript", "typescript", "vue" },
           },
         },
       },
@@ -83,6 +87,7 @@ return {
 
     -- Eslint
     lspconfig.eslint.setup({
+      cmd = { 'vscode-eslint-language-server', '--stdio' },
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -92,14 +97,8 @@ return {
       end,
     })
 
-    -- Pint
-    -- lspconfig.pint.setup({ capabilities = capabilities })
-
-    -- Prettier
-    -- lspconfig.prettier_d.setup({ capabilities = capabilities })
-
     -- Emmet
-    lspconfig.emmet_ls.setup({ capabilities = capabilities })
+    -- lspconfig.emmet_ls.setup({ capabilities = capabilities })
 
     -- JSON
     lspconfig.jsonls.setup({
@@ -126,35 +125,6 @@ return {
         }
       }
     })
-
-    -- require('sonarlint').setup({
-    --    server = {
-    --       cmd = {
-    --          'sonarlint-language-server',
-    --          -- Ensure that sonarlint-language-server uses stdio channel
-    --          '-stdio',
-    --          '-analyzers',
-    --          -- paths to the analyzers you need, using those for python and java in this example
-    --          vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarjs.jar"),
-    --          vim.fn.expand("$MASON/packages/sonarlint-language-server/extension/analyzers/sonarphp.jar"),
-    --       }
-    --    },
-    --    filetypes = {
-    --       'php',
-    --       'js',
-    --    },
-    --   settings = {
-    --      sonarlint = {
-    --         rules = {
-    --            ['php:S103'] = { level = 'on' },
-    --            -- php comments
-    --            ['php:S125'] = { level = 'off' },
-    --         }
-    --      }
-    --   }
-    -- })
-
-    -- require('mason-null-ls').setup({ ensure_installed = {}, automatic_installation = true })
 
     -- Keymaps
     vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
