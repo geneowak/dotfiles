@@ -51,7 +51,7 @@ return {
       capabilities = capabilities,
       -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
       -- This drastically improves the responsiveness of diagnostic updates on change
-      -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
     local mason_registry = require("mason-registry")
