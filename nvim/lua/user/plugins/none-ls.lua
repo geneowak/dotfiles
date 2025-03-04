@@ -24,7 +24,7 @@ return {
 
     local sources = {
       require("none-ls.formatting.ruff").with({
-        extra_args = { "--extend-select", "I" },
+        extra_args = { "--extend-select", "I", "w291" },
       }),
       formatting.shfmt.with({ args = { "-i", "4" } }),
       formatting.stylua,

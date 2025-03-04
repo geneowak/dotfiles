@@ -49,14 +49,11 @@ return {
         -- end
       end,
       capabilities = capabilities,
-      -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
-      -- This drastically improves the responsiveness of diagnostic updates on change
-      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
     local mason_registry = require("mason-registry")
-    local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-        .. "/node_modules/@vue/language-server"
+    local vue_language_server = mason_registry.get_package("vue-language-server"):get_install_path()
+    local vue_language_server_path = vue_language_server .. "/node_modules/@vue/language-server"
 
     -- TypeScript
     lspconfig.ts_ls.setup({
