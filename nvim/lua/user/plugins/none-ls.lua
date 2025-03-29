@@ -47,10 +47,10 @@ return {
         end,
       }),
       formatting.prettier.with({
-        condition = function(utils)
-          return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js',
-            'prettier.config.js' })
-        end,
+        -- condition = function(utils)
+        --   return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js',
+        --     'prettier.config.js' })
+        -- end,
       }),
     }
 
