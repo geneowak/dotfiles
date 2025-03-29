@@ -19,7 +19,19 @@ return {
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+    local lsp_flags = {
+      allow_incremental_sync = true,
+      debounce_text_changes = 150,
+    }
+
     local lspconfig = require("lspconfig")
+
+    -- Emmet
+    lspconfig.emmet_ls.setup({
+      capabilities = capabilities,
+      flags = lsp_flags
+    })
+
     -- PHP
     lspconfig.intelephense.setup({
       commands = {
