@@ -1,5 +1,5 @@
 return {
-    -- Games to practice vim movements
+  -- Games to practice vim movements
   'ThePrimeagen/vim-be-good',
 
   -- Commenting support.
@@ -38,7 +38,7 @@ return {
   -- Text objects for HTML attributes.
   {
     'whatyouhide/vim-textobj-xmlattr',
-    dependencies = {'kana/vim-textobj-user'},
+    dependencies = { 'kana/vim-textobj-user' },
   },
 
   -- Markdonw preview
@@ -50,7 +50,7 @@ return {
   },
 
   -- Git commands.
-  { 'tpope/vim-fugitive', dependencies = 'tpope/vim-rhubarb' },
+  { 'tpope/vim-fugitive',    dependencies = 'tpope/vim-rhubarb' },
 
   -- Automatically fix indentation when pasting code.
   {
