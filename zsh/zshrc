@@ -236,14 +236,14 @@ function restart_ubuntu_sound() {
 }
 
 # switching php versions
-function switch_2_php8.1() {
-  brew unlink php@7.4
-  brew link php@8.1
+function switch_2_php8.3() {
+  brew unlink php
+  brew link php@8.3
 }
 
-function switch_2_php7.4() {
-  brew unlink php@8.1
-  brew link php@7.4
+function switch_2_php8.4() {
+  brew unlink php@8.3
+  brew link php
 }
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
