@@ -160,26 +160,21 @@ alias pintf='pint -v'
 # Git
 alias nah="git reset --hard && git clean -df"
 alias undocommit="git reset HEAD~1"
-alias gs="git status"
+alias gst="git status"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gadalc='git add . && git commit -m'
 alias gcap='git commit -am'
 alias wip="git commit -am 'wip'"
 alias amend="git commit -a --amend"
 alias amendn="git commit -a --amend --no-edit"
-alias gp='git push'
 alias gs='git status'
 alias gpcl='git pull && clean_git_branches'
 # git new branch
 alias gnb='git checkout -b'
-# checkout the dev branch, pull changes and remove deleted branches
-alias gcdpc='git checkout develop && git pull && clean_git_branches'
 # checkout the main branch, pull changes and remove deleted branches
 alias gcmpc='git checkout main && git pull && clean_git_branches'
 # checkout the mainline branch, pull changes and remove deleted branches
 alias gcmlpc='git checkout mainline && git pull && clean_git_branches'
-# checkout the staging branch, pull changes and remove deleted branches
-alias gcspc='git checkout staging && git pull && clean_git_branches'
 
 # clear the console
 alias rs='reset'
