@@ -173,8 +173,8 @@ alias gpcl='git pull && clean_git_branches'
 alias gnb='git checkout -b'
 # checkout the main branch, pull changes and remove deleted branches
 alias gcmpc='git checkout main && git pull && clean_git_branches'
-# checkout the mainline branch, pull changes and remove deleted branches
-alias gcmlpc='git checkout mainline && git pull && clean_git_branches'
+# checkout the mainline branch, pull changes and remove deleted branches and switch to wip branch
+alias gcmlpc='git checkout mainline && git pull && clean_git_branches && git checkout -b geneowak/wip'
 
 # clear the console
 alias rs='reset'
