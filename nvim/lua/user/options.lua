@@ -3,8 +3,6 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 
-vim.opt.expandtab = true
-
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.js,*.vue,*.jsx,*.json",
   command = "setlocal tabstop=2 shiftwidth=2",
