@@ -29,7 +29,7 @@ return {
     -- Emmet
     lspconfig.emmet_ls.setup({
       capabilities = capabilities,
-      flags = lsp_flags
+      flags = lsp_flags,
     })
 
     -- PHP
@@ -64,7 +64,8 @@ return {
     })
 
     local mason_registry = require("mason-registry")
-    local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
+    local vue_language_server_path =
+        vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
 
     -- TypeScript
     lspconfig.ts_ls.setup({
@@ -152,11 +153,12 @@ return {
       vim.lsp.buf.format({ timeout_ms = 5000 })
     end, {})
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        vim.lsp.buf.format({ async = false })
-      end,
-    })
+    -- this is already handled by null-ls.nvim
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   callback = function()
+    --     vim.lsp.buf.format({ async = true })
+    --   end,
+    -- })
 
     -- Diagnostic configuration
     vim.diagnostic.config({

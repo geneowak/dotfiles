@@ -8,20 +8,20 @@ return {
   config = function()
     local null_ls = require("null-ls")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    local formatting = null_ls.builtins.formatting   -- to setup formatters
+    local formatting = null_ls.builtins.formatting -- to setup formatters
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
     require("mason-null-ls").setup({
       ensure_installed = {
         "prettier", -- ts/js formatter
-        "stylua",   -- lua formatter
+        "stylua", -- lua formatter
         "eslint_d", -- ts/js linter
         "shfmt",
         "ruff",
         "tailwindcss-language-server",
         "typescript-language-server",
         "luacheck",
-        "css-lsp"
+        "css-lsp",
       },
       automatic_installation = true,
     })
@@ -36,7 +36,12 @@ return {
       -- requires none-ls-extras.nvim
       require("none-ls.diagnostics.eslint_d").with({
         condition = function(utils)
-          return utils.root_has_file({ '.eslintrc.js', '.eslint.config.js', '.eslintrc.cjs', 'eslint.config.mjs' })
+          return utils.root_has_file({
+            ".eslintrc.js",
+            ".eslint.config.js",
+            ".eslintrc.cjs",
+            "eslint.config.mjs",
+          })
         end,
       }),
       -- null_ls.builtins.diagnostics.phpstan, -- TODO: Only if config file
