@@ -2,6 +2,9 @@
 
 DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
+rm -rf $HOME/.config/starship.toml
+ln -s $DOTFILES/starship/starship.toml $HOME/.config/starship.toml
+
 rm -rf $HOME/.zshrc
 ln -s $DOTFILES/zsh/zshrc $HOME/.zshrc
 
