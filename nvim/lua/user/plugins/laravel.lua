@@ -10,9 +10,9 @@ return {
   },
   cmd = { "Laravel" },
   keys = {
-    { "<leader>la", ":Laravel artisan<cr>" },
-    { "<leader>lr", ":Laravel routes<cr>" },
-    { "<leader>lm", ":Laravel related<cr>" },
+    { "<leader>La", ":Laravel artisan<cr>" },
+    { "<leader>Lr", ":Laravel routes<cr>" },
+    { "<leader>Lm", ":Laravel related<cr>" },
   },
   event = { "VeryLazy" },
   opts = {
