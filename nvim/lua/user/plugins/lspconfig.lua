@@ -33,6 +33,17 @@ return {
     })
 
     -- PHP
+    lspconfig.phpactor.setup({
+      on_attach = function(client, bufnr)
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
+        -- if client.server_capabilities.inlayHintProvider then
+        --   vim.lsp.buf.inlay_hint(bufnr, true)
+        -- end
+      end,
+      capabilities = capabilities,
+      flags = lsp_flags,
+    })
     lspconfig.intelephense.setup({
       commands = {
         IntelephenseIndex = {
