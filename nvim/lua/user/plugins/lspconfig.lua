@@ -24,27 +24,14 @@ return {
       debounce_text_changes = 150,
     }
 
-    local lspconfig = require("lspconfig")
-
     -- Emmet
-    lspconfig.emmet_ls.setup({
+    vim.lsp.config("emmet_ls", {
       capabilities = capabilities,
       flags = lsp_flags,
     })
 
     -- PHP
-    lspconfig.phpactor.setup({
-      on_attach = function(client, bufnr)
-        -- client.server_capabilities.documentFormattingProvider = false
-        -- client.server_capabilities.documentRangeFormattingProvider = false
-        -- if client.server_capabilities.inlayHintProvider then
-        --   vim.lsp.buf.inlay_hint(bufnr, true)
-        -- end
-      end,
-      capabilities = capabilities,
-      flags = lsp_flags,
-    })
-    lspconfig.intelephense.setup({
+    vim.lsp.config("intelephense", {
       commands = {
         IntelephenseIndex = {
           function()
@@ -63,7 +50,7 @@ return {
     })
 
     -- Vue, JavaScript, TypeScript
-    lspconfig.volar.setup({
+    vim.lsp.config("vue_ls", {
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
@@ -79,7 +66,7 @@ return {
         vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
 
     -- TypeScript
-    lspconfig.ts_ls.setup({
+    vim.lsp.config("ts_ls", {
       init_options = {
         plugins = {
           {
@@ -101,7 +88,7 @@ return {
     })
 
     -- Python
-    lspconfig.pylsp.setup({
+    vim.lsp.config("pylsp", {
       settings = {
         pylsp = {
           plugins = {
@@ -119,10 +106,10 @@ return {
     })
 
     -- Tailwind CSS
-    lspconfig.tailwindcss.setup({ capabilities = capabilities })
+    vim.lsp.config("tailwindcss", { capabilities = capabilities })
 
     -- JSON
-    lspconfig.jsonls.setup({
+    vim.lsp.config("jsonls", {
       capabilities = capabilities,
       settings = {
         json = {
@@ -132,7 +119,7 @@ return {
     })
 
     -- Lua
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
           runtime = { version = "LuaJIT" },
