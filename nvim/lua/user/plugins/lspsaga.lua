@@ -24,7 +24,7 @@ return {
     keymap("n", "<leader>gh", "<cmd>Lspsaga lsp_finder<CR>")
 
     -- Code action
-    keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
     -- Rename all occurrences of the hovered word for the entire file
     keymap("n", "<leader>gr", "<cmd>Lspsaga rename<CR>")
@@ -40,7 +40,7 @@ return {
     -- keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 
     -- Go to definition
-    keymap("n","<leader>gd", "<cmd>Lspsaga goto_definition<CR>")
+    keymap("n", "<leader>gd", "<cmd>Lspsaga goto_definition<CR>")
 
     -- Peek type definition
     -- You can edit the file containing the type definition in the floating window
@@ -50,7 +50,7 @@ return {
     keymap("n", "<leader>gt", "<cmd>Lspsaga peek_type_definition<CR>")
 
     -- Go to type definition
-    keymap("n","<leader>gt", "<cmd>Lspsaga goto_type_definition<CR>")
+    keymap("n", "<leader>gt", "<cmd>Lspsaga goto_type_definition<CR>")
 
 
     -- Show line diagnostics
@@ -81,7 +81,7 @@ return {
     end)
 
     -- Toggle outline
-    keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
+    keymap("n", "<leader>so", "<cmd>Lspsaga outline<CR>")
 
     -- Hover Doc
     -- If there is no hover doc,
@@ -90,6 +90,5 @@ return {
     -- To disable it just use ":Lspsaga hover_doc ++quiet"
     -- Pressing the key twice will enter the hover window
     keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
   end,
 }
