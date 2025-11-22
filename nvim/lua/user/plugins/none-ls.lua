@@ -22,7 +22,6 @@ return {
         "typescript-language-server",
         "luacheck",
         "css-lsp",
-        "phpactor",
         "intelephense",
       },
       automatic_installation = true,
