@@ -57,7 +57,7 @@ return {
         completion = {
           col_offset = -2, -- align the abbr and word on cursor (due to fields order below)
         },
-        documentation = true,
+        documentation = cmp.config.window.bordered(),
       },
       formatting = {
         fields = { "kind", "abbr", "menu" },
