@@ -1,28 +1,28 @@
 -- Completion
 
 return {
-  'hrsh7th/nvim-cmp',
+  "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
     -- 'hrsh7th/cmp-copilot',
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-    'onsails/lspkind-nvim',
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind-nvim",
     "mlaursen/vim-react-snippets",
   },
-  opts = function ()
+  opts = function()
     require("vim-react-snippets").lazy_load()
   end,
   config = function()
-    local cmp = require('cmp')
-    local luasnip = require('luasnip')
-    local lspkind = require('lspkind')
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
+    local lspkind = require("lspkind")
 
-    require('luasnip/loaders/from_snipmate').lazy_load()
+    require("luasnip/loaders/from_snipmate").lazy_load()
 
     local has_words_before = function()
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -40,7 +40,7 @@ return {
     }
 
     local function ltrim(s)
-      return s:match'^%s*(.*)'
+      return s:match("^%s*(.*)")
     end
 
     cmp.setup({
@@ -51,32 +51,40 @@ return {
         end,
       },
       view = {
-        entries = { name = 'custom', selection_order = 'near_cursor' },
+        entries = { name = "custom", selection_order = "near_cursor" },
       },
       window = {
         completion = {
-          col_offset = -2 -- align the abbr and word on cursor (due to fields order below)
-        }
+          col_offset = -2, -- align the abbr and word on cursor (due to fields order below)
+        },
+        documentation = true,
       },
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
-          mode = 'symbol',
+          mode = "symbol",
           -- See: https://www.reddit.com/r/neovim/comments/103zetf/how_can_i_get_a_vscodelike_tailwind_css/
           before = function(entry, vim_item)
             -- Replace the 'menu' field with the kind and source
-            vim_item.menu = '  ' .. vim_item.kind .. ' (' .. (source_map[entry.source.name] or entry.source.name) .. ')'
-            vim_item.menu_hl_group = 'SpecialComment'
+            vim_item.menu = "  "
+                .. vim_item.kind
+                .. " ("
+                .. (source_map[entry.source.name] or entry.source.name)
+                .. ")"
+            vim_item.menu_hl_group = "SpecialComment"
 
             vim_item.abbr = ltrim(vim_item.abbr)
 
-            if vim_item.kind == 'Color' and entry.completion_item.documentation then
-              local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
+            if vim_item.kind == "Color" and entry.completion_item.documentation then
+              local _, _, r, g, b =
+                  string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
               if r then
-                local color = string.format('%02x', r) .. string.format('%02x', g) ..string.format('%02x', b)
-                local group = 'Tw_' .. color
+                local color = string.format("%02x", r)
+                    .. string.format("%02x", g)
+                    .. string.format("%02x", b)
+                local group = "Tw_" .. color
                 if vim.fn.hlID(group) < 1 then
-                  vim.api.nvim_set_hl(0, group, {fg = '#' .. color})
+                  vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
                 end
                 vim_item.kind_hl_group = group
                 return vim_item
@@ -84,12 +92,11 @@ return {
             end
 
             return vim_item
-          end
+          end,
         }),
       },
-      mapping = {
+      mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
-          -- print('tab...')
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
@@ -109,15 +116,15 @@ return {
             fallback()
           end
         end, { "i", "s" }),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
-      },
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      }),
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'luasnip' },
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "luasnip" },
         -- { name = 'copilot' },
-        { name = 'buffer' },
-        { name = 'path' },
+        { name = "buffer" },
+        { name = "path" },
       },
       experimental = {
         -- ghost_text = true,
