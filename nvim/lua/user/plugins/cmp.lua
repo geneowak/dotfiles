@@ -15,7 +15,7 @@ return {
     "mlaursen/vim-react-snippets",
   },
   opts = function()
-    require("vim-react-snippets").lazy_load()
+    -- require("vim-react-snippets").lazy_load()
   end,
   config = function()
     local cmp = require("cmp")
