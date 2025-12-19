@@ -1,0 +1,27 @@
+window-decoration = false
+
+# cursor-blink-interval 0
+# enable-audio-bell 0
+# hide-window-decorations yes
+# title-bar-only yes
+# titlebar-and-corners yes
+# window-padding-width 10
+
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+keybind = shift+insert=paste_from_clipboard
+
+# BEGIN-GHOSTTY-THEME
+theme = custom-cobalt2.toml
+# END-GHOSTTY-THEME
+
+# adjust line height
+adjust-cell-height = 65%
+
+# BEGIN-GHOSTTY-FONTS
+font-size = 16
+font-family = VictorMono Nerd Font
+font-style-bold = default
+font-style-italic = default
+font-style-bold-italic = default
+# END-GHOSTTY-FONTS
