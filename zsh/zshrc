@@ -185,6 +185,8 @@ alias rc='reset_console'
 # command to update kitty terminal. PS: Same command is used for installing kitty terminal
 alias update_kitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
+alias claude24="AWS_PROFILE=claude CLAUDE_CODE_USE_BEDROCK=1 AWS_REGION=us-east-1 ANTHROPIC_MODEL=us.anthropic.claude-opus-4-5-20251101-v1:0 claude"
+
 # test func
 # prints the input
 function output_input() {
