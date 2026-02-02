@@ -1,0 +1,77 @@
+# Alacritty Configuration
+# Converted from Kitty config
+
+# =============================================================================
+# Import theme (change theme by editing current-theme.toml)
+# =============================================================================
+[general]
+import = ["~/.config/alacritty/current-theme.toml"]
+
+# =============================================================================
+# Font Configuration
+# =============================================================================
+[font]
+size = 14
+
+[font.normal]
+family = "VictorMono Nerd Font Mono"
+style = "Light"
+
+[font.bold]
+style = "Bold"
+
+[font.italic]
+style = "Italic"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+# Line height (cell height offset for ~180% line height)
+[font.offset]
+y = 6
+
+# =============================================================================
+# Cursor Configuration
+# =============================================================================
+[cursor]
+# Disable cursor blinking
+blink_interval = 0
+
+[cursor.style]
+shape = "Block"
+blinking = "Off"
+
+# =============================================================================
+# Bell Configuration
+# =============================================================================
+[bell]
+duration = 0
+
+# =============================================================================
+# Window Configuration
+# =============================================================================
+[window]
+# decorations = "None"
+dynamic_padding = true
+
+[window.padding]
+x = 10
+y = 10
+
+# =============================================================================
+# Keyboard Bindings
+# =============================================================================
+[keyboard]
+bindings = [
+  # Clipboard (these are defaults on macOS, but explicit for clarity)
+  { key = "C", mods = "Command", action = "Copy" },
+  { key = "V", mods = "Command", action = "Paste" },
+  { key = "Insert", mods = "Shift", action = "Paste" },
+
+  # Custom key sequences for Neovim compatibility
+  # https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/
+  { key = "Return", mods = "Control", chars = "\u001b[13;5u" },
+  { key = "Return", mods = "Shift", chars = "\u001b[13;2u" },
+  { key = "Tab", mods = "Control", chars = "\u001b[9;5u" },
+  { key = "Tab", mods = "Control|Shift", chars = "\u001b[9;6u" },
+]
