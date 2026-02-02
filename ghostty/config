@@ -1,27 +1,36 @@
-window-decoration = false
+# Font settings
+font-family = VictorMono Nerd Font Mono
+font-style = Light
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
+font-size = 14
 
-# cursor-blink-interval 0
-# enable-audio-bell 0
-# hide-window-decorations yes
-# title-bar-only yes
-# titlebar-and-corners yes
-# window-padding-width 10
+# Line height (Ghostty adds to default, so 80% extra ≈ 180% total)
+adjust-cell-height = 80%
 
+# Cursor settings
+cursor-style-blink = false
+
+# Bell settings (empty value disables all bell features)
+bell-features =
+
+# Window settings
+# window-decoration = false
+window-padding-x = 10
+window-padding-y = 10
+
+# Clipboard keybindings (these are defaults in Ghostty, but explicit for clarity)
 keybind = cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
 keybind = shift+insert=paste_from_clipboard
 
-# BEGIN-GHOSTTY-THEME
+# Custom key sequences for Neovim compatibility
+# Ability to map ctrl+tab (https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/)
+keybind = ctrl+enter=text:\x1b[13;5u
+keybind = shift+enter=text:\x1b[13;2u
+keybind = ctrl+tab=text:\x1b[9;5u
+keybind = ctrl+shift+tab=text:\x1b[9;6u
+
+# Theme (uses custom theme from themes/custom-cobalt2.toml)
 theme = custom-cobalt2.toml
-# END-GHOSTTY-THEME
-
-# adjust line height
-adjust-cell-height = 65%
-
-# BEGIN-GHOSTTY-FONTS
-font-size = 16
-font-family = VictorMono Nerd Font
-font-style-bold = default
-font-style-italic = default
-font-style-bold-italic = default
-# END-GHOSTTY-FONTS
