@@ -108,6 +108,15 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin/php:$PATH"
 export XDEBUG_CONFIG="idekey=VSCODE"
 
+# export $GOPATH =~/Code/go
+# export PATH=$PATH:$GOPATH/bin
+
+# Set the GOPATH (default is $HOME/go)
+export GOPATH=$HOME/go
+# Add Go binary directory to your PATH
+export PATH=$PATH:$GOPATH/bin
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
