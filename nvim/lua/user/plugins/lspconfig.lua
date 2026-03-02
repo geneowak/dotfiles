@@ -30,6 +30,12 @@ return {
       flags = lsp_flags,
     })
 
+    -- Go
+    vim.lsp.config("gopls", {
+      capabilities = capabilities,
+      flags = lsp_flags,
+    })
+
     -- PHP
     vim.lsp.config("intelephense", {
       commands = {
