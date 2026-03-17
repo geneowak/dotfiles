@@ -2,9 +2,6 @@ return {
   -- Games to practice vim movements
   "ThePrimeagen/vim-be-good",
 
-  -- Commenting support.
-  "tpope/vim-commentary",
-
   -- Add, change, and delete surrounding text.
   "tpope/vim-surround",
 

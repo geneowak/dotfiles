@@ -41,7 +41,10 @@ return {
       commands = {
         IntelephenseIndex = {
           function()
-            vim.lsp.buf.execute_command({ command = "intelephense.index.workspace" })
+            local clients = vim.lsp.get_clients({ name = "intelephense" })
+            if clients[1] then
+              clients[1]:exec_cmd({ command = "intelephense.index.workspace" })
+            end
           end,
         },
       },
@@ -140,10 +143,23 @@ return {
       },
     })
 
+    -- Enable all configured LSP servers
+    vim.lsp.enable({
+      "emmet_ls",
+      "gopls",
+      "intelephense",
+      "vue_ls",
+      "ts_ls",
+      "pylsp",
+      "tailwindcss",
+      "jsonls",
+      "lua_ls",
+    })
+
     -- Keymaps
     vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
-    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>")
+    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>")
     vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>")
     vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
     vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
@@ -168,14 +184,16 @@ return {
     vim.diagnostic.config({
       virtual_text = false,
       float = {
-        source = true,
+        source = "if_many",
+      },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.HINT] = "",
+        },
       },
     })
-
-    -- Sign configuration
-    vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
   end,
 }
