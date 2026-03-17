@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -261,30 +263,34 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Herd injected PHP binary.
-export PATH="/Users/geneowak/Library/Application Support/Herd/bin/":$PATH
+export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
 
 # Herd injected PHP 8.2 configuration.
-export HERD_PHP_82_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/82/"
+export HERD_PHP_82_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/82/"
 
 # Herd injected PHP 8.1 configuration.
-export HERD_PHP_81_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/81/"
+export HERD_PHP_81_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/81/"
 
 
 
 # Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/83/"
+export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
 
 
 # Herd injected PHP 8.0 configuration.
-export HERD_PHP_80_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/80/"
+export HERD_PHP_80_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/80/"
 
 
 # Herd injected PHP 7.4 configuration.
-export HERD_PHP_74_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/74/"
+export HERD_PHP_74_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/74/"
 
 
 # Herd injected PHP 8.4 configuration.
-export HERD_PHP_84_INI_SCAN_DIR="/Users/geneowak/Library/Application Support/Herd/config/php/84/"
+export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
 
 # Starship prompt
  eval "$(starship init zsh)"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+. "$HOME/.deno/env"
