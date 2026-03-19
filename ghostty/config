@@ -10,7 +10,9 @@ font-size = 14
 adjust-cell-height = 80%
 
 # Cursor settings
+cursor-style = bar
 cursor-style-blink = false
+adjust-cursor-thickness = 2
 
 # Bell settings (empty value disables all bell features)
 bell-features =
