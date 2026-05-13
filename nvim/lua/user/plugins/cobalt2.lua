@@ -7,12 +7,10 @@ return {
   priority = 1000,
   init = function()
     require("colorbuddy").colorscheme("cobalt2")
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#0d3858' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#0088ff', bg = '#0d3858' })
   end,
   config = function()
-    vim.api.nvim_set_hl(0, 'FloatBorder', {
-      fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-      bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-    })
 
     -- Make the cursor line background invisible
     vim.api.nvim_set_hl(0, 'CursorLineBg', {

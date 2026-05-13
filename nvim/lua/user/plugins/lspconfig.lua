@@ -158,8 +158,8 @@ return {
 
     -- Keymaps
     vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
-    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>")
-    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>")
+    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>")
+    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>")
     vim.keymap.set("n", "gd", ":Telescope lsp_definitions<CR>")
     vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
     vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
@@ -184,14 +184,15 @@ return {
     vim.diagnostic.config({
       virtual_text = false,
       float = {
-        source = "if_many",
+        source = true,
+        border = { " ", " ", " ", " ", " ", " ", " ", " " },
       },
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.INFO] = "",
-          [vim.diagnostic.severity.HINT] = "",
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.HINT] = "",
         },
       },
     })
