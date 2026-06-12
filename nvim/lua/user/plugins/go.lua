@@ -5,11 +5,13 @@ return {
   dependencies = {  -- optional packages
     "ray-x/guihua.lua",
     "neovim/nvim-lspconfig",
-    "nvim-treesitter/nvim-treesitter",
+    -- "nvim-treesitter/nvim-treesitter",
   },
   opts = function()
 
-    require("go").setup(opts)
+    require("go").setup({
+      lsp_codelens = false
+    })
     local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*.go",

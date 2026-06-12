@@ -14,15 +14,15 @@ return {
 
     -- Make the cursor line background invisible
     vim.api.nvim_set_hl(0, 'CursorLineBg', {
-      fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-      bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+      fg = vim.api.nvim_get_hl(0, { name = 'CursorLine' }).bg,
+      bg = vim.api.nvim_get_hl(0, { name = 'CursorLine' }).bg,
     })
 
     vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
 
     vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-      fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-      bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+      fg = vim.api.nvim_get_hl(0, { name = 'NonText' }).fg,
+      bg = vim.api.nvim_get_hl(0, { name = 'StatusLine' }).bg,
     })
 
     vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
