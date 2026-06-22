@@ -156,16 +156,26 @@ alias c="code ."
 alias p="phpstorm ."
 
 # Laravel/PHP
-alias pa='php artisan'
-alias acc='pa cache:clear && pa config:clear'
-alias ct='composer test'
-alias vtf='vendor/bin/phpunit --colors=always --testdox --filter'
-alias at='pa test'
-alias atp='pa test --parallel'
-alias ats='pa test --stop-on-fail'
-alias atf='pa test --filter'
+alias artisan='php artisan'
+alias pas='php artisan serve'
+alias pats='php artisan test'
+
+alias pam='php artisan migrate'
+alias pamf='php artisan migrate:fresh'
+alias pamfs='php artisan migrate:fresh --seed'
+alias pamr='php artisan migrate:rollback'
+alias pads='php artisan db:seed'
+alias padw='php artisan db:wipe'
+
+alias acc='php artisan cache:clear && php artisan config:clear'
+alias at='php artisan test'
+alias atp='php artisan test --parallel'
+alias ats='php artisan test --stop-on-fail'
+alias atf='php artisan test --filter'
 alias tinker="php artisan tinker"
 
+alias vtf='vendor/bin/phpunit --colors=always --testdox --filter'
+alias ct='composer test'
 alias ctf='composer test -- --filter'
 alias cda='composer dump-autoload'
 alias cl='composer lint'
