@@ -168,18 +168,6 @@ return {
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
     vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
-    -- Commands
-    vim.api.nvim_create_user_command("Format", function()
-      vim.lsp.buf.format({ timeout_ms = 5000 })
-    end, {})
-
-    -- this is already handled by null-ls.nvim
-    -- vim.api.nvim_create_autocmd("BufWritePre", {
-    --   callback = function()
-    --     vim.lsp.buf.format({ async = true })
-    --   end,
-    -- })
-
     -- Diagnostic configuration
     vim.diagnostic.config({
       virtual_text = false,
