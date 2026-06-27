@@ -2,17 +2,17 @@
 font-family = VictorMono Nerd Font Mono
 font-style = Medium
 font-style-bold = Bold
-font-style-italic = Italic
+font-style-italic = Bold Italic
 font-style-bold-italic = Bold Italic
-font-size = 14
+font-size = 17
 
 # Line height (Ghostty adds to default, so 80% extra ≈ 180% total)
-adjust-cell-height = 80%
+adjust-cell-height = 95%
 
 # Cursor settings
 cursor-style = bar
 cursor-style-blink = false
-adjust-cursor-thickness = 2
+adjust-cursor-thickness = 1
 
 # Bell settings (empty value disables all bell features)
 bell-features =
