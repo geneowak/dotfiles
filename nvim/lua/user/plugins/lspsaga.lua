@@ -30,7 +30,7 @@ return {
     keymap("n", "<leader>gr", "<cmd>Lspsaga rename<CR>")
 
     -- Rename all occurrences of the hovered word for the selected files
-    keymap("n", "<leader>gr", "<cmd>Lspsaga rename ++project<CR>")
+    -- keymap("n", "<leader>gr", "<cmd>Lspsaga rename ++project<CR>")
 
     -- Peek definition
     -- You can edit the file containing the definition in the floating window
