@@ -3,6 +3,7 @@
 return {
   'geneowak/cobalt2.nvim',
   dependencies = { "tjdevries/colorbuddy.nvim", tag = "v1.0.0" },
+  enabled = false,
   lazy = false,
   priority = 1000,
   init = function()
@@ -11,7 +12,6 @@ return {
     vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#0088ff', bg = '#0d3858' })
   end,
   config = function()
-
     -- Make the cursor line background invisible
     vim.api.nvim_set_hl(0, 'CursorLineBg', {
       fg = vim.api.nvim_get_hl(0, { name = 'CursorLine' }).bg,

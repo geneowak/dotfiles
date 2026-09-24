@@ -14,12 +14,10 @@ return {
     vim.g.floaterm_borderchars = "─│─│┌┐┘└"
     vim.g.floaterm_borderchars = ""
     vim.g.floaterm_title = ""
-    -- " Configuration example
 
-    -- " Set floaterm window's background to black
-    -- vim.cmd('hi Floaterm guibg=#0d3a58')
-    vim.cmd("hi Floaterm guibg=#0d3858")
-    -- " Set floating window border line color to cyan, and background to orange
-    vim.cmd("hi FloatermBorder guibg=#0d3858 guifg=#0088ff")
+    -- Set floaterm window's background
+    vim.cmd("hi Floaterm guibg=#1A1A1A")
+    -- Set floating window border line color and background
+    vim.cmd("hi FloatermBorder guibg=#1A1A1A guifg=#424242")
   end,
 }
